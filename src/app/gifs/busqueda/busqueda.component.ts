@@ -1,16 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-busqueda',
   templateUrl: './busqueda.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class BusquedaComponent implements OnInit {
+export class BusquedaComponent {
+  // textBuscar! -> el operador ! se llama Non-null assertion operator
+  @ViewChild('textBuscar') textBuscar!: ElementRef<HTMLInputElement>;
 
-  constructor() { }
+  // Metodos
+  buscar() {
+    // 📝 Valor de la Busqueda
+    const valor = this.textBuscar.nativeElement.value;
+    console.log(valor);
 
-  ngOnInit(): void {
+    // 📝 Limpiando Busqueda
+    this.textBuscar.nativeElement.value = '';
   }
-
 }
